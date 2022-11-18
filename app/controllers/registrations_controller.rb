@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
         @user = User.new(user_params)
         
         if @user.save
+            session[:user_id] = @user.id # it saved on server side not in browser
             redirect_to root_path, notice: "Successfully created account"
         else
             # flash[:alert] = "Something was wrong"
